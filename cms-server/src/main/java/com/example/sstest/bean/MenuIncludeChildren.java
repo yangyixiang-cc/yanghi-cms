@@ -5,16 +5,16 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class MenuIncludeChildren extends MenuItem{
+public class MenuIncludeChildren extends MenuItem {
 
     private List<MenuItem> children;
 
-    MenuIncludeChildren(){
+    MenuIncludeChildren() {
 
     }
 
-    public MenuIncludeChildren(Menu menu){
-        super(menu.getId(),menu.getName(), menu.getMenuName(),menu.getPId(), menu.getRedirect());
+    public MenuIncludeChildren(Menu menu) {
+        super(menu.getId(), menu.getName(), menu.getMenuName(), menu.getPId(), menu.getRedirect());
     }
 
 

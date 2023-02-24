@@ -104,7 +104,6 @@ const handleOk = () => {
     onOk() {
       return new Promise((resolve, reject) => {
         emits('handleOk', uploadUrl.value);
-        imgDel();
         resolve();
       }).catch(() => console.log('更换头像失败！'));
     },

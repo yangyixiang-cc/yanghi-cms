@@ -42,7 +42,7 @@ public class Result<T> implements Serializable {
         this.data = data;
     }
 
-    private static <T> Result<T> restResult(int code, String msg,T data) {
+    private static <T> Result<T> restResult(int code, String msg, T data) {
         Result<T> apiResult = new Result<>();
         apiResult.setCode(code);
         apiResult.setSuccess(code == 1);
@@ -53,41 +53,43 @@ public class Result<T> implements Serializable {
 
 
     public static <T> Result<T> ok() {
-        return restResult( ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMsg(),null);
+        return restResult(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMsg(), null);
     }
 
     public static <T> Result<T> ok(T data) {
-        return restResult(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMsg(),data);
+        return restResult(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMsg(), data);
     }
 
     public static <T> Result<T> ok(String msg) {
-        return restResult(ResultCode.SUCCESS.getCode(), msg,null);
+        return restResult(ResultCode.SUCCESS.getCode(), msg, null);
     }
 
     public static <T> Result<T> ok(T data, String msg) {
-        return restResult(ResultCode.SUCCESS.getCode(), msg,data);
+        return restResult(ResultCode.SUCCESS.getCode(), msg, data);
     }
 
     public static <T> Result<T> failed() {
-        return restResult(ResultCode.FAILED.getCode(), ResultCode.FAILED.getMsg(),null);
+        return restResult(ResultCode.FAILED.getCode(), ResultCode.FAILED.getMsg(), null);
     }
+
     public static <T> Result<T> failed(String msg) {
-        return restResult(ResultCode.FAILED.getCode(), msg,null);
+        return restResult(ResultCode.FAILED.getCode(), msg, null);
     }
 
     public static <T> Result<T> failed(ResultCode resultCode) {
-        return restResult(resultCode.getCode(), resultCode.getMsg(),null);
+        return restResult(resultCode.getCode(), resultCode.getMsg(), null);
     }
-    public static <T> Result<T> failed(Integer code,String msg) {
-        return restResult(code, msg,null);
+
+    public static <T> Result<T> failed(Integer code, String msg) {
+        return restResult(code, msg, null);
     }
 
     public static <T> Result<T> failed(T data) {
-        return restResult( ResultCode.FAILED.getCode(), ResultCode.SUCCESS.getMsg(),data);
+        return restResult(ResultCode.FAILED.getCode(), ResultCode.SUCCESS.getMsg(), data);
     }
 
     public static <T> Result<T> failed(T data, String msg) {
-        return restResult(ResultCode.FAILED.getCode(), msg,data);
+        return restResult(ResultCode.FAILED.getCode(), msg, data);
     }
 
     @Override

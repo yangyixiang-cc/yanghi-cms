@@ -18,13 +18,13 @@ public class MenuItem {
 
     private String color;
 
-    public MenuItem(Long id, String name, String menuName, Long pid, String redirect){
-        this.id =  id;
+    public MenuItem(Long id, String name, String menuName, Long pid, String redirect) {
+        this.id = id;
         this.name = menuName;
-        if(Objects.isNull(pid)){
-            this.color =Constant.MENU_COLOR_PINK;
-        }else{
-            this.color=Constant.MENU_COLOR_GREEN;
+        if (Objects.isNull(pid)) {
+            this.color = Constant.MENU_COLOR_PINK;
+        } else {
+            this.color = Constant.MENU_COLOR_GREEN;
         }
     }
 

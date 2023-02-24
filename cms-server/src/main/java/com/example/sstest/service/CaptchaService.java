@@ -1,4 +1,5 @@
 package com.example.sstest.service;
+
 import com.example.sstest.utils.Result;
 
 import java.io.IOException;
@@ -13,5 +14,5 @@ public interface CaptchaService {
     Result captchaCreator() throws IOException;
 
     //验证输入的验证码是否正确
-    Result versifyCaptcha (String token, String inputCode);
+    Result versifyCaptcha(String token, String inputCode);
 }

@@ -89,7 +89,7 @@ public class FileController {
 
     @DeleteMapping("/delete")
     public Result deleteFile(@RequestParam("fileName") String fileName) {
-        String temp = fileName.substring(fileName.indexOf('/')+2);
+        String temp = fileName.substring(fileName.indexOf('/') + 2);
         String key = temp.substring(temp.indexOf('/'));
         COSClient cosclient = null;
         try {

@@ -23,6 +23,9 @@ const userStore = defineStore('user', {
     setUserInfo(userinfo) {
       this.userinfo = userinfo;
     },
+    setUserAvatar(url) {
+      this.userinfo.avatar = url;
+    },
     removeUserInfo() {
       this.userinfo = {};
     },

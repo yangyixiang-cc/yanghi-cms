@@ -40,11 +40,11 @@ public class LoginUser implements UserDetails {
     //获取权限信息
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(simpleGrantedAuthorities.size() > 0){
+        if (simpleGrantedAuthorities.size() > 0) {
             return simpleGrantedAuthorities;
         }
 
-        for(String permission: permissions){
+        for (String permission : permissions) {
             simpleGrantedAuthorities.add(new SimpleGrantedAuthority(permission));
         }
         return simpleGrantedAuthorities;

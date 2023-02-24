@@ -20,7 +20,7 @@ public class MenuController {
 
 
     @GetMapping("/menu_tree")
-    public Result getMenuTree(){
+    public Result getMenuTree() {
         return menuService.getAllMenusAndStatusISNormal();
     }
 
@@ -31,12 +31,12 @@ public class MenuController {
 
 
     @GetMapping("/allmenus")
-    public Result getAllMenu(){
+    public Result getAllMenu() {
         return menuService.getAllMenus();
     }
 
     @GetMapping("/page")
-    public Result getMenuPage(@RequestParam("current") int current, @RequestParam("pageSize") int pageSize){
+    public Result getMenuPage(@RequestParam("current") int current, @RequestParam("pageSize") int pageSize) {
         return menuService.getMenuPage(current, pageSize);
     }
 
@@ -54,51 +54,51 @@ public class MenuController {
                                                 @RequestParam("beginTime") String beginTime,
                                                 @RequestParam("lastTime") String lastTime) {
         return menuService.getMenuSearchPage(
-        current,
-        pageSize,
-        menuName,
-        name,
-        path,
-        redirect,
-        component,
-        perms,
-        status,
-        visible,
-        beginTime,
-        lastTime);
+                current,
+                pageSize,
+                menuName,
+                name,
+                path,
+                redirect,
+                component,
+                perms,
+                status,
+                visible,
+                beginTime,
+                lastTime);
     }
 
     @DeleteMapping("/{id}")
-    public  Result deleteMenuOneById(@PathVariable("id") Long id){
+    public Result deleteMenuOneById(@PathVariable("id") Long id) {
         return menuService.deleteMenuOneById(id);
     }
 
 
     @PostMapping("/add")
-    public Result addMenuOne(Menu menu){
+    public Result addMenuOne(Menu menu) {
         return menuService.addMenu(menu);
     }
 
     @PutMapping("/update")
-    public Result updateMenuOne( Menu menu
-                                ){
+    public Result updateMenuOne(Menu menu
+    ) {
         return menuService.updateMenuOne(menu);
     }
 
     @PostMapping("/betch_delete")
-    public Result betchDelterMenu(@RequestParam("ids[]") Long[] ids){
+    public Result betchDelterMenu(@RequestParam("ids[]") Long[] ids) {
         List<Long> longs = Arrays.asList(ids);
         return menuService.betchDeleteMenu(longs);
     }
 
     @GetMapping("/father_menus")
-    Result getFatherMenus(){
+    Result getFatherMenus() {
         return menuService.getFatherMenus();
     }
 
 
     @GetMapping("/sub_menus")
-    Result getSubMenus(){
+    Result getSubMenus() {
         return menuService.getSubMenus();
     }
 

@@ -16,22 +16,22 @@ import java.util.Date;
  * @author makejava
  * @since 2021-11-24 15:30:08
  */
-@TableName(value="sys_menu")
+@TableName(value = "sys_menu")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Menu implements Serializable {
     private static final long serialVersionUID = -54979041104113736L;
-    
+
     @TableId(type = IdType.ASSIGN_ID)
     private Long id;
     /**
-    * 菜单名
-    */
+     * 菜单名
+     */
     private String menuName;
     /**
-    * 路由地址
-    */
+     * 路由地址
+     */
     private String path;
 
     /**
@@ -40,13 +40,13 @@ public class Menu implements Serializable {
     private String name;
 
     /**
-    * 组件路径
-    */
+     * 组件路径
+     */
     private String component;
 
     /**
-    * 菜单是否可见（1显示 0隐藏）
-    */
+     * 菜单是否可见（1显示 0隐藏）
+     */
     private Boolean visible;
     /**
      * 菜单状态（0正常 1停用）
@@ -59,13 +59,13 @@ public class Menu implements Serializable {
 
     private Boolean auth;
     /**
-    * 权限标识
-    */
+     * 权限标识
+     */
     private String perms;
 
     /**
-    * 菜单图标
-    */
+     * 菜单图标
+     */
     private String icon;
 
     /**
@@ -74,8 +74,8 @@ public class Menu implements Serializable {
     private String redirect;
 
     /**
-    * 备注
-    */
+     * 备注
+     */
     private String remark;
 
     /**
@@ -91,7 +91,7 @@ public class Menu implements Serializable {
     /**
      * 创建时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="Asia/Shanghai")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
@@ -102,7 +102,7 @@ public class Menu implements Serializable {
     /**
      * 更新时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="Asia/Shanghai")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 

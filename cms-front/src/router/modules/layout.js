@@ -32,8 +32,31 @@ export default [{
     }]
   }, {
     path: "/404",
+    name: '404',
+    meta: {
+      auth: false, // 添加该字段，表示进入这个路由是需要登录的
+      title: '404'
+    },
     component: () => import("@/views/error/404.vue"),
   },
+  {
+    path: "/403",
+    name: '403',
+    meta: {
+      auth: false, // 添加该字段，表示进入这个路由是需要登录的
+      title: '403'
+    },
+    component: () => import("@/views/error/403.vue"),
+  },
+  {
+    path: "/500",
+    name: '500',
+    meta: {
+      auth: false, // 添加该字段，表示进入这个路由是需要登录的
+      title: '500'
+    },
+    component: () => import("@/views/error/500.vue"),
+  }
 ];
 //{
 //   path: '/layout',

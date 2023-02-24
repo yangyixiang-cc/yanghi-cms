@@ -1,9 +1,12 @@
 package com.example.sstest.config;
+
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import java.util.Properties;
+
 //Kaptcha配置
 @Configuration
 public class KaptchaConfig {
@@ -30,7 +33,7 @@ public class KaptchaConfig {
         // 字体
         properties.setProperty("kaptcha.textproducer.font.names", "宋体,楷体,微软雅黑");
         //图片干扰
-        	    		     properties.setProperty("kaptcha.noise.impl","com.google.code.kaptcha.impl.DefaultNoise");
+        properties.setProperty("kaptcha.noise.impl", "com.google.code.kaptcha.impl.DefaultNoise");
         //Kaptcha 使用上述配置
         Config config = new Config(properties);
         //DefaultKaptcha对象使用上述配置, 并返回这个Bean

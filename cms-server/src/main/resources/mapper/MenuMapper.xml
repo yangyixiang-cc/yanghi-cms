@@ -13,17 +13,31 @@
           AND sm.`status` = 0
     </select>
     <select id="selectUserPermissionByUserId" resultType="com.example.sstest.bean.Menu">
-        SELECT m.id, m.`menu_name`, m.`path`, m.`component`,  m.`icon`, m.`name`,m.`auth`, m.`cache`, m.`visible`,  m.`redirect`,m.`perms`,m.`remark`, m.`p_id`
-        FROM
-            sys_menu m
-                INNER JOIN sys_role_menu p ON p.menu_id = m.id
-                INNER JOIN sys_user_role ur ON ur.role_id = p.role_id
-                INNER JOIN sys_user u ON u.id = ur.user_id
-                INNER JOIN sys_role r ON r.id = ur.role_id where ur.user_id= #{id}
-                                                             and m.`status`= 0
+        SELECT m.id,
+               m.`menu_name`,
+               m.`path`,
+               m.`component`,
+               m.`icon`,
+               m.`name`,
+               m.`auth`,
+               m.`cache`,
+               m.`visible`,
+               m.`redirect`,
+               m.`perms`,
+               m.`remark`,
+               m.`p_id`
+        FROM sys_menu m
+                 INNER JOIN sys_role_menu p ON p.menu_id = m.id
+                 INNER JOIN sys_user_role ur ON ur.role_id = p.role_id
+                 INNER JOIN sys_user u ON u.id = ur.user_id
+                 INNER JOIN sys_role r ON r.id = ur.role_id
+        where ur.user_id = #{id}
+          and m.`status` = 0
         order by m.sort
     </select>
     <select id="getMenusAndStatusISNormalByRoleId" resultType="java.lang.String">
-        select menu_id from sys_role_menu where role_id = #{roleId};
+        select menu_id
+        from sys_role_menu
+        where role_id = #{roleId};
     </select>
 </mapper>

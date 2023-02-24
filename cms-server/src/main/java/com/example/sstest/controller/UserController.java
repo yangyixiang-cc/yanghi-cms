@@ -32,7 +32,7 @@ public class UserController {
 
     @GetMapping("/verify_code")
     public Result verifyCode(@RequestParam("token") String token,
-                        @RequestParam("inputCode") String inputCode) {
+                             @RequestParam("inputCode") String inputCode) {
         return captchaService.versifyCaptcha(token, inputCode);
     }
 

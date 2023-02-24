@@ -34,12 +34,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //查询用户信息
         User userOneByUsername = userService.getUserOneByUsername(username);
-        if(Objects.isNull(userOneByUsername)){
+        if (Objects.isNull(userOneByUsername)) {
             throw new Exception("用户名或密码错误");
         }
         //获取权限认证信息
         List<String> auths = menuMapper.selectPermsByUserId(userOneByUsername.getId());
         List<String> userRolesById = userMapper.getUserRolesById(userOneByUsername.getId());
-        return new LoginUser(userOneByUsername,auths, userRolesById);
+        return new LoginUser(userOneByUsername, auths, userRolesById);
     }
 }

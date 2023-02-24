@@ -3,10 +3,15 @@
 <mapper namespace="com.example.sstest.mapper.RoleMapper">
 
     <select id="getAllRoles" resultType="com.example.sstest.bean.Role">
-        select * from sys_role where status = 0;
+        select *
+        from sys_role
+        where status = 0;
     </select>
     <select id="getRolesAndStatusIsNormalByUserId" resultType="com.example.sstest.bean.Role">
-        SELECT id,name,role_key from sys_role where id in (SELECT sys_user_role.role_id from sys_user_role WHERE sys_user_role.user_id = #{id}) and status = 0;
+        SELECT id, name, role_key
+        from sys_role
+        where id in (SELECT sys_user_role.role_id from sys_user_role WHERE sys_user_role.user_id = #{id})
+          and status = 0;
     </select>
 
 

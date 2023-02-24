@@ -12,6 +12,7 @@ import java.util.List;
 public interface RoleService extends IService<Role> {
     /**
      * 获取所有角色信息 并且角色状态正常
+     *
      * @return
      */
     Result getRolesAndStatusIsNormal();
@@ -22,7 +23,8 @@ public interface RoleService extends IService<Role> {
 
     /**
      * 角色分页
-     * @param current 当前页
+     *
+     * @param current  当前页
      * @param pageSize 每页条数
      * @return
      */

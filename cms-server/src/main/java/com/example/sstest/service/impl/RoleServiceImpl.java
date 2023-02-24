@@ -50,7 +50,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     @Override
     public Result getAllRoles() {
         QueryWrapper<Role> roleQueryWrapper = new QueryWrapper<>();
-        List<Role> list = this.list(roleQueryWrapper.select("id", "name", "role_key", "status","remark", "create_time"));
+        List<Role> list = this.list(roleQueryWrapper.select("id", "name", "role_key", "status", "remark", "create_time"));
         return Result.ok(list, "获取全部角色信息成功");
     }
 
@@ -64,24 +64,24 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     @Override
     public Result<Page<Role>> getRoleSearchPage(int current, int pageSize, String name, String roleKey, String status, String beginTime, String lastTime) {
         boolean isTime = true;
-        if("".equals(beginTime) && "".equals(lastTime)){
+        if ("".equals(beginTime) && "".equals(lastTime)) {
             isTime = false;
         }
         QueryWrapper<Role> roleQueryWrapper = new QueryWrapper<>();
         roleQueryWrapper
-                .like(!"".equals(name),"name", name)
-                .like(!"".equals(roleKey),"role_key",roleKey)
-                .like(!"".equals(status),"status", status)
-                .between(isTime,"create_time",beginTime, lastTime);
+                .like(!"".equals(name), "name", name)
+                .like(!"".equals(roleKey), "role_key", roleKey)
+                .like(!"".equals(status), "status", status)
+                .between(isTime, "create_time", beginTime, lastTime);
         Page<Role> rolePage = new Page<>(current, pageSize);
-        Page<Role> page = this.page(rolePage,roleQueryWrapper);
+        Page<Role> page = this.page(rolePage, roleQueryWrapper);
         return Result.ok(page);
     }
 
     @Override
     public Result deleteRoleOneById(Long id) {
         boolean b = this.removeById(id);
-        if(!b){
+        if (!b) {
             return Result.failed("数据删除失败");
         }
         return Result.ok("数据删除成功");
@@ -93,11 +93,11 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         QueryWrapper<Role> roleQueryWrapper = new QueryWrapper<>();
         roleQueryWrapper.eq("name", name);
         List<Role> list = this.list(roleQueryWrapper);
-        if(list.size() > 0){
+        if (list.size() > 0) {
             return Result.failed("角色名已存在");
         }
         boolean save = this.save(role);
-        if(save){
+        if (save) {
             return Result.ok("添加角色成功");
         }
         return Result.failed("添加角色失败");
@@ -115,13 +115,13 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
                 .map(roleAndMenu -> roleAndMenu.getMenuId())
                 .collect(Collectors.toList());
         boolean b1 = chanceMenus.removeAll(existedMenus);
-        if(b1){
+        if (b1) {
             chanceMenus.stream().forEach(aLong -> {
                 roleAndMenuMapper.insert(new RoleAndMenu(null, roleIncludeMenus.getId(), aLong, null));
             });
         }
         boolean b = this.updateById(roleIncludeMenus);
-        if(b){
+        if (b) {
             return Result.ok("更新角色成功");
         }
         return Result.failed("更新角色失败");
@@ -130,7 +130,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     @Override
     public Result betchDeleteRole(List<Long> ids) {
         boolean b = this.removeBatchByIds(ids);
-        if(b){
+        if (b) {
             return Result.ok("批量删除角色成功");
         }
         return Result.failed("批量删除角色失败");

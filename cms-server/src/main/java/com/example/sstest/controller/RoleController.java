@@ -19,23 +19,23 @@ public class RoleController {
     private RoleService roleService;
 
     @GetMapping("/status_normal")
-    public Result getRolesAndStatusIsNormal(){
+    public Result getRolesAndStatusIsNormal() {
         return roleService.getRolesAndStatusIsNormal();
     }
 
     @GetMapping("/user_roles")
-    public Result getUserRolesById(@RequestParam("userId") Long userId){
+    public Result getUserRolesById(@RequestParam("userId") Long userId) {
         return roleService.getRolesAndStatusIsNormalByUserId(userId);
     }
 
     @GetMapping("/allroles")
-    public Result gerAllRoles(){
+    public Result gerAllRoles() {
         return roleService.getAllRoles();
     }
 
     @GetMapping("/page")
-    public Result getRolePage(@RequestParam("current") int current, @RequestParam("pageSize") int pageSize){
-        return roleService.getRolePage(current,pageSize);
+    public Result getRolePage(@RequestParam("current") int current, @RequestParam("pageSize") int pageSize) {
+        return roleService.getRolePage(current, pageSize);
     }
 
     @PostMapping("/return_search_page")
@@ -54,23 +54,23 @@ public class RoleController {
     }
 
     @DeleteMapping("/{id}")
-    public  Result deleteRoleOneById(@PathVariable("id") Long id){
+    public Result deleteRoleOneById(@PathVariable("id") Long id) {
         return roleService.deleteRoleOneById(id);
     }
 
 
     @PostMapping("/add")
-    public Result addRoleOne(Role role){
+    public Result addRoleOne(Role role) {
         return roleService.addRole(role);
     }
 
     @PostMapping("/update")
-    public Result updateRoleOne(RoleIncludeMenus roleIncludeMenus){
+    public Result updateRoleOne(RoleIncludeMenus roleIncludeMenus) {
         return roleService.updateRoleOne(roleIncludeMenus);
     }
 
     @PostMapping("/betch_delete")
-    public Result betchDelterRole(@RequestParam("ids[]") Long[] ids){
+    public Result betchDelterRole(@RequestParam("ids[]") Long[] ids) {
         List<Long> longs = Arrays.asList(ids);
         return roleService.betchDeleteRole(longs);
     }

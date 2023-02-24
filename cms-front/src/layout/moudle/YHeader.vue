@@ -148,6 +148,8 @@ const logout = async () => {
 
     &-img {
       margin-right: 10px;
+      border: 1px solid #fff;
+      border-radius: 4px;
     }
 
     &-msg {

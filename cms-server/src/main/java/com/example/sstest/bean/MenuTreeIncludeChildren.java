@@ -3,16 +3,17 @@ package com.example.sstest.bean;
 import lombok.Data;
 
 import java.util.List;
+
 @Data
-public class MenuTreeIncludeChildren extends Menu{
+public class MenuTreeIncludeChildren extends Menu {
 
     private List<Menu> children;
 
-    public MenuTreeIncludeChildren(){
+    public MenuTreeIncludeChildren() {
 
     }
 
-    public MenuTreeIncludeChildren(Menu menu){
+    public MenuTreeIncludeChildren(Menu menu) {
         super(
                 menu.getId(),
                 menu.getMenuName(),
@@ -37,7 +38,7 @@ public class MenuTreeIncludeChildren extends Menu{
         );
     }
 
-    public MenuTreeIncludeChildren(Menu menu, List<Menu> children){
+    public MenuTreeIncludeChildren(Menu menu, List<Menu> children) {
         super(
                 menu.getId(),
                 menu.getMenuName(),

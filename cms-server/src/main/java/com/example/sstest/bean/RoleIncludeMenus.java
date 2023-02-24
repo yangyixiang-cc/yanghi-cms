@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RoleIncludeMenus extends Role{
+public class RoleIncludeMenus extends Role {
 
     private String[] chanceMenus;
 

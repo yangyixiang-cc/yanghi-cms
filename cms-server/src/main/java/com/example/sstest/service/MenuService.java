@@ -23,7 +23,8 @@ public interface MenuService extends IService<Menu> {
 
     /**
      * 角色分页
-     * @param current 当前页
+     *
+     * @param current  当前页
      * @param pageSize 每页条数
      * @return
      */
@@ -37,9 +38,9 @@ public interface MenuService extends IService<Menu> {
      * @return
      */
     Result getMenuSearchPage(int current, int pageSize,
-                                         String menuName,
-                                         String name,
-                                         String path,
+                             String menuName,
+                             String name,
+                             String path,
                              String redirect,
                              String component,
                              String perms,

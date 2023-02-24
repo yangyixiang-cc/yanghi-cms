@@ -28,7 +28,7 @@ public class CaptchaServiceImpl implements CaptchaService {
     @Autowired
     private DefaultKaptcha producer;
     //从SpringBoot的配置文件中取出过期时间
-    public static final Integer TIME_OUT = 60*1000 ;// 60 * 60 *1000  1min
+    public static final Integer TIME_OUT = 60 * 1000;// 60 * 60 *1000  1min
 
     //UUID为key, 验证码为Value放在Redis中
     @Override
@@ -39,12 +39,13 @@ public class CaptchaServiceImpl implements CaptchaService {
         ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
         valueOperations.set(key, captcha);
         //设置验证码过期时间
-        redisTemplate.expire(key,TIME_OUT, TimeUnit.MINUTES);
+        redisTemplate.expire(key, TIME_OUT, TimeUnit.MINUTES);
         Map<String, Object> map = new HashMap<>();
         map.put("token", key);
         map.put("expire", TIME_OUT);
         return map;
     }
+
     //生成captcha验证码
     @Override
     public Result captchaCreator() throws IOException {

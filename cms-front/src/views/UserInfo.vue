@@ -12,7 +12,12 @@
             </div>
             <div class="main-container-content-left-user-avatar">
               <a href="#" @click="showImgMobel">
-                <img :src="user.userinfo.avatar" alt="用户头像">
+                <!-- <img :src="user.userinfo.avatar" alt="用户头像"> -->
+                <a-avatar :alt="user.userinfo.nickName" :src="user.userinfo.avatar" shape="square" class="img">
+                  <template #icon>
+                    <UserOutlined />
+                  </template>
+                </a-avatar>
                 <div class="text">
                   <upload-outlined />
                 </div>
@@ -252,6 +257,7 @@ const showImgMobel = () => {
 
 const uploadHandleOk = async (uploadUrl) => {
   user.userinfo.avatar = uploadUrl;
+  user.setUserAvatar(uploadUrl);
   await User.updateUserOne({
     id: user.userinfo.id,
     avatar: uploadUrl
@@ -332,9 +338,11 @@ const uploadOverCancel = () => {
             height: 160px !important;
             padding: 20px auto;
 
-
-            img {
+            .img {
               position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
               width: 100px;
               height: 100px;
               border: 1px solid #ccc;

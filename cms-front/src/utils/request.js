@@ -15,7 +15,7 @@ import router from '@/router';
 // } = useStore();
 // 创建请求实例
 const instance = axios.create({
-  baseURL: 'http://localhost:9999',
+  baseURL: 'http://81.68.127.141:9999',
   // 指定请求超时的毫秒数
   timeout: 5000,
   // 表示跨域请求时是否需要使用凭证
@@ -101,8 +101,12 @@ instance.interceptors.response.use(
     const {
       message
     } = error;
-    console.error(message);
-    return Promise.reject(error);
+    if (message.includes('Network Error')) {
+      router.push({
+        name: '500'
+      });
+      return Promise.reject(error);
+    }
   },
 );
 

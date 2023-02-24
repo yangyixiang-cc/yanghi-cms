@@ -35,8 +35,8 @@ public class MeunServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         QueryWrapper<Menu> menuQueryWrapper = new QueryWrapper<>();
         menuQueryWrapper.eq("status", Constant.ROLE_NORMAL);
         List<Menu> list = this.list(menuQueryWrapper);
-        if(list.size() <= 0){
-         return Result.failed("没有查询出菜单信息");
+        if (list.size() <= 0) {
+            return Result.failed("没有查询出菜单信息");
         }
         List<MenuIncludeChildren> menuTree = getMenuTree(list);
         return Result.ok(menuTree);
@@ -48,8 +48,6 @@ public class MeunServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         List<String> menusAndStatusISNormalByRoleId = menuMapper.getMenusAndStatusISNormalByRoleId(roleId);
         return Result.ok(menusAndStatusISNormalByRoleId);
     }
-
-
 
 
     @Override
@@ -71,14 +69,14 @@ public class MeunServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
                 .map(menu -> menu.getId())
                 .collect(Collectors.toList());
         QueryWrapper<Menu> menuQueryWrapper1 = new QueryWrapper<>();
-        menuQueryWrapper1.in("p_id",fatherIds).isNotNull("p_id");
+        menuQueryWrapper1.in("p_id", fatherIds).isNotNull("p_id");
         List<Menu> subMenus = this.list(menuQueryWrapper1);
         stringObjectHashMap.put("current", menuPage.getCurrent());
         stringObjectHashMap.put("size", menuPage.getSize());
         stringObjectHashMap.put("total", menuPage.getTotal());
         records.addAll(subMenus);
         List<MenuTreeIncludeChildren> menuTree1 = getMenuTree1(records);
-        stringObjectHashMap.put("records",menuTree1);
+        stringObjectHashMap.put("records", menuTree1);
         return Result.ok(stringObjectHashMap);
     }
 
@@ -95,40 +93,40 @@ public class MeunServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
                                     String beginTime,
                                     String lastTime) {
         boolean isTime = true;
-        if("".equals(beginTime) && "".equals(lastTime)){
+        if ("".equals(beginTime) && "".equals(lastTime)) {
             isTime = false;
         }
         QueryWrapper<Menu> menuQueryWrapper = new QueryWrapper<>();
         menuQueryWrapper
-                .like(!"".equals(menuName),"menu_name", menuName)
-                .like(!"".equals(name),"name", name)
-                .like(!"".equals(path),"path",path)
-                .like(!"".equals(redirect),"redirect", redirect)
-                .like(!"".equals(component),"component", component)
-                .like(!"".equals(perms),"perms",perms)
-                .like(!"".equals(status),"redirect", status)
-                .like(!"".equals(visible),"redirect",visible)
-                .between(isTime,"create_time",beginTime, lastTime);
+                .like(!"".equals(menuName), "menu_name", menuName)
+                .like(!"".equals(name), "name", name)
+                .like(!"".equals(path), "path", path)
+                .like(!"".equals(redirect), "redirect", redirect)
+                .like(!"".equals(component), "component", component)
+                .like(!"".equals(perms), "perms", perms)
+                .like(!"".equals(status), "redirect", status)
+                .like(!"".equals(visible), "redirect", visible)
+                .between(isTime, "create_time", beginTime, lastTime);
         List<Menu> list = this.list(menuQueryWrapper);
         List<MenuTreeIncludeChildren> menuTree1 = getMenuTree1(list);
         int total = menuTree1.size();
-        int page = total%pageSize == 0 ? total/pageSize : total/pageSize + 1;
-        int begin = current == 1 ? current-1:(current-1)*pageSize-1;
-        int over = current < page ? begin+pageSize : total;
+        int page = total % pageSize == 0 ? total / pageSize : total / pageSize + 1;
+        int begin = current == 1 ? current - 1 : (current - 1) * pageSize - 1;
+        int over = current < page ? begin + pageSize : total;
         List<MenuTreeIncludeChildren> records = menuTree1.subList(begin, over);
         HashMap<String, Object> stringObjectHashMap = new HashMap<>();
-        stringObjectHashMap.put("current",current);
+        stringObjectHashMap.put("current", current);
         stringObjectHashMap.put("size", pageSize);
         stringObjectHashMap.put("total", total);
-        stringObjectHashMap.put("records",records);
+        stringObjectHashMap.put("records", records);
         return Result.ok(stringObjectHashMap);
     }
 
     @Override
     public Result deleteMenuOneById(Long id) {
         Menu byId = this.getById(id);
-        if (!Objects.isNull(byId)){
-            if(Objects.isNull(byId.getPId())){
+        if (!Objects.isNull(byId)) {
+            if (Objects.isNull(byId.getPId())) {
                 //1.查询是否是父级菜单，如果是删除父级菜单和子菜单
                 QueryWrapper<Menu> menuQueryWrapper = new QueryWrapper<>();
                 menuQueryWrapper.eq("p_id", byId.getId()).select("id");
@@ -140,21 +138,21 @@ public class MeunServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
                     }
                 }).collect(Collectors.toList());
                 boolean b = this.removeBatchByIds(collect);
-                if(b){
+                if (b) {
                     return Result.ok("删除菜单及子菜单成功");
-                }else{
+                } else {
                     return Result.failed("删除菜单项及子菜单失败");
                 }
-            }else{
+            } else {
                 //2.否则删除自身即可
                 boolean b = this.removeById(id);
-                if(b){
+                if (b) {
                     return Result.ok("删除菜单项成功");
-                }else{
+                } else {
                     return Result.failed("删除菜单项失败");
                 }
             }
-        }else{
+        } else {
             return Result.failed("不存在该菜单项");
         }
     }
@@ -165,11 +163,11 @@ public class MeunServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         QueryWrapper<Menu> menuQueryWrapper = new QueryWrapper<>();
         menuQueryWrapper.eq("menu_name", menuName);
         List<Menu> list = this.list(menuQueryWrapper);
-        if(list.size() > 0){
+        if (list.size() > 0) {
             return Result.failed("菜单名称已存在");
         }
         boolean save = this.save(menu);
-        if(save){
+        if (save) {
             return Result.ok("添加菜单项成功");
         }
         return Result.failed("添加菜单项失败");
@@ -178,7 +176,7 @@ public class MeunServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     @Override
     public Result updateMenuOne(Menu menu) {
         boolean b = this.updateById(menu);
-        if(b){
+        if (b) {
             return Result.ok("更新菜单项成功");
         }
         return Result.failed("更新菜单项失败");
@@ -209,9 +207,9 @@ public class MeunServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         longs.addAll(fatherSubMenusId);
         List<Long> deleteIds = longs.stream().distinct().collect(Collectors.toList());
         boolean b = this.removeByIds(deleteIds);
-        if(b){
+        if (b) {
             return Result.ok("删除菜单成功");
-        }else{
+        } else {
             return Result.ok("删除菜单失败");
         }
     }
@@ -252,7 +250,7 @@ public class MeunServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     }
 
 
-    private List<MenuIncludeChildren> getMenuTree(List<Menu> t){
+    private List<MenuIncludeChildren> getMenuTree(List<Menu> t) {
         ArrayList<MenuIncludeChildren> objects = new ArrayList<>();
         List<Menu> layout = t.stream()
                 .filter(menu -> Objects.isNull(menu.getPId()))
@@ -265,7 +263,7 @@ public class MeunServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
                     .stream()
                     .filter(item -> item.getPId().equals(menu.getId()))
                     .sorted((o1, o2) -> o1.getSort() - o2.getSort())
-                    .map((Function<Menu, MenuItem>) menu1 -> new MenuItem(menu1.getId(), menu1.getName(),menu1.getMenuName(), menu1.getPId(), menu1.getRedirect()))
+                    .map((Function<Menu, MenuItem>) menu1 -> new MenuItem(menu1.getId(), menu1.getName(), menu1.getMenuName(), menu1.getPId(), menu1.getRedirect()))
                     .collect(Collectors.toList());
             menuIncludeChildren.setChildren(collect1);
             objects.add(menuIncludeChildren);
@@ -273,7 +271,7 @@ public class MeunServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         return objects;
     }
 
-    private List<MenuTreeIncludeChildren> getMenuTree1(List<Menu> s){
+    private List<MenuTreeIncludeChildren> getMenuTree1(List<Menu> s) {
         ArrayList<MenuTreeIncludeChildren> objects = new ArrayList<>();
         List<Menu> layout = s.stream()
                 .filter(menu -> Objects.isNull(menu.getPId()))
