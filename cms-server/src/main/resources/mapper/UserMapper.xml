@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sstest.mapper.UserMapper">
+    <delete id="deleteUseOneById">
+        delete from sys_user where id = #{id};
+    </delete>
+    <select id="getUserRolesById" resultType="java.lang.String">
+        SELECT r.name from sys_role r WHERE r.id in (SELECT role_id from sys_user_role WHERE sys_user_role.user_id = #{id} );
+    </select>
+</mapper>
