@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MyBatisCodeHelperDatasource">
+    <option name="projectProfile">
+      <ProjectProfile>
+        <option name="mapperFilesFolder" value="E:\Java\Java框架学习\SpringSecurity\ss-test\src\main\resources\mapper" />
+        <option name="mapperFilesFolderList">
+          <list>
+            <option value="E:\Java\Java框架学习\SpringSecurity\ss-test\src\main\resources\mapper" />
+          </list>
+        </option>
+      </ProjectProfile>
+    </option>
+  </component>
+</project>

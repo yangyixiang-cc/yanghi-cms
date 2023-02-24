@@ -1,0 +1,10 @@
+
+_
+java:S22595"IA "NullPointerException" could be thrown; "oldFileName" is nullable here.(ýŒÜ
+h	java:S1000"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÀÀ“äÿÿÿÿÿ
+e
+java:S4488/"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Ëä¢Œþÿÿÿÿ
+Y
+java:S1117B">Rename "bucketName" which hides the field declared at line 35.(í¬®”þÿÿÿÿ
+O
+java:S1481M"4Remove this unused "putObjectResult" local variable.(åÞ¡­üÿÿÿÿ
