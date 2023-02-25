@@ -1,18 +1,17 @@
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/cms?useSSL=false&serverTimezone=GMT&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    url: 
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: yangyihi2001
+    username: 
+    password: 
   mvc:
     hiddenmethod:
       filter:
         enabled: true
   # 配置redis
   redis:
-    host: 192.168.130.137 #Redis服务器地址
+    host:  #Redis服务器地址
     port: 6379 #Redis服务器连接端口
-    password: 410327
     database: 0   #Redis数据库索引（默认为0）
     timeout: 1800000  #连接超时时间（毫秒）
     lettuce:
@@ -22,12 +21,12 @@ spring:
         min-idle: 0  #连接池中的最小空闲连接
         max-wait: -1 #最大阻塞等待时间(负数表示没限制)
   cos:
-    accessKey: AKIDbGtLdrshP1cLyNXTCk15wd7QWVP4pNip
-    secretKey: 30qTr0tY1KQHvJWZO0NXVDkDTVJsBGKY
-    bucket: ap-nanjing
-    bucketName: yanghi-save-1312993591
-    path: https://yanghi-save-1312993591.cos.ap-nanjing.myqcloud.com
-    prefix: /img/
+    accessKey: 
+    secretKey:
+    bucket: 
+    bucketName: 
+    path: 
+    prefix: 
 
 #配置mybatis
 mybatis-plus:
