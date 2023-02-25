@@ -43,7 +43,7 @@
               <a-form-item name="remember" no-style>
                 <a-checkbox v-model:checked="formState.remember">记住密码</a-checkbox>
               </a-form-item>
-              <a class="login-form-forgot" href="">忘记密码</a>
+              <!-- <a class="login-form-forgot" href="">忘记密码</a> -->
             </a-form-item>
 
             <a-form-item>
@@ -53,14 +53,14 @@
               </a-button>
               <br />
               <br />
-              <a href="">现在注册!</a>
+              <!-- <a href="">现在注册!</a> -->
             </a-form-item>
           </a-form>
         </div>
       </div>
     </div>
     <div class="container-bot">
-      无头内容管理系统（CMS） - 2.13.10<br /><br />
+      {{ defaultSetting.title }} - 2.13.10<br /><br />
       Copyright 2020-2023 by yanghi
     </div>
   </div>
@@ -71,6 +71,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
 import { message } from 'ant-design-vue';
 import User from '@/api/user';
 import useStore from '../store/index';
+import defaultSetting from "@/utils/getPageTitle";
 import {
   setToken,
   removeToken
@@ -152,6 +153,7 @@ const onFinish = async (values) => {
         },
       })
     } else {
+      await getCaptchaCode();
       message.error(data.msg);
       user.removeUserInfo();
       user.removeRoles();
@@ -159,6 +161,7 @@ const onFinish = async (values) => {
       removeToken();
     }
   } else {
+    await getCaptchaCode();
     message.error(res.msg);
   }
 };

@@ -1,9 +1,10 @@
 <template>
   <div class="footer">
-    无头CMS内容管理系统 ©2023 Created by yanghi
+    {{ defaultSetting.title }} ©2023 Created by yanghi
   </div>
 </template>
 <script setup>
+import defaultSetting from "@/utils/setting";
 
 </script>
 <style scoped lang="less">

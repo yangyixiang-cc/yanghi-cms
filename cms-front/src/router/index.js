@@ -33,7 +33,6 @@ export function resetRouter() {
 
 
 router.beforeEach(async (to, from, next) => {
-  console.log(to);
   if (to.name === 'login') {
     document.title = defaultSettings.title;
   } else {
@@ -63,7 +62,6 @@ router.beforeEach(async (to, from, next) => {
     }
   } else {
     if (to.name === undefined) {
-      console.log(1);
       resetRouter();
       await permissions.generateRoutes(user.userinfo.id);
       next({
