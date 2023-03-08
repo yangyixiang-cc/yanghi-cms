@@ -217,6 +217,11 @@ git clone https://github.com/yangyixiang-cc/yanghi-cms.git
 
 然后使用 `npm run dev` 命令运行项目即可。
 
+测试账号：
+
+* 用户名：yangyihi
+* 密码：yangyihi2001
+
 #  反馈
 
 如果您有任何反馈，请通过发送至[电子邮件](mailto:workyyx@163.com)与我联系/或者提交`issues` 。
