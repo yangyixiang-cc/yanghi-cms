@@ -220,7 +220,7 @@ git clone https://github.com/yangyixiang-cc/yanghi-cms.git
 测试账号：
 
 * 用户名：yangyihi
-* 密码：yangyihi2001
+* 密码：YANGyihi2001
 
 #  反馈
 
